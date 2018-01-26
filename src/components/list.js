@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
+import TodoItem from './todoItem.jsx';
 
 class List extends Component {
     render() {
         return(
             <div className="liste">
                 <div className="NbrTodo">To-do : [ <span className="TodoLength">{this.props.todos.length} </span> ] </div>
-                <div className="Explication">Une fois ajouté, cliquez sur l'élément de la liste afin de changer son Statut de "A faire" à "Fait" </div>
+                <div className="Explication"> Changez le statut de l'élément en cliquant sur le bouton associé. </div>
                 <div className="EltAdded">{this.showTodos(this.props.todos)}</div>
         </div>
         );
@@ -17,10 +18,10 @@ class List extends Component {
         return(
             todos.map((todo, idx) => {
                 return(
-                    <div className="todo" key="todo-{todo.title}"
-                         onClick={() => this.toggleTodo(todo, idx)}>
-                        {todo.title} {todo.done ? ': Fait' : ': A faire'}
-                    </div>
+                <TodoItem item={todo}
+                          key={todo.title+''+idx}
+                          idx={idx}
+                          toggleTodo={this.toggleTodo.bind(this)}/>
                 )
             })
         );

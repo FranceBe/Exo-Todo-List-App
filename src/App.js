@@ -28,10 +28,10 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">To-Do list </h1>
         </header>
-        <p className="App-intro">
+        <div className="App-intro">
         <TodoForm onNewTodo={this.onNewTodo.bind(this)}/>
           <List todos={this.stat.todos} onTodoToggle={this.toggleTodoState.bind(this)}/>
-        </p>
+        </div>
       </div>
     );
   }
